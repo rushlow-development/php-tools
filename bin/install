@@ -1,0 +1,34 @@
+#!/usr/bin/env php
+<?php
+
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\SingleCommandApplication;
+use Symfony\Component\Process\Process;
+
+require dirname(__DIR__).'/vendor/autoload.php';
+
+(new SingleCommandApplication())
+    ->setDescription('Run composer upgrade for each of the tools.')
+    ->setCode(function (InputInterface $input, OutputInterface $output): int {
+       foreach (['php-cs-fixer', 'phpstan', 'psalm', 'rector'] as $path) {
+           $output->writeln(sprintf('Installing %s', $path));
+
+           $process = Process::fromShellCommandline(sprintf('composer upgrade -d %s', $path));
+
+           if (Command::SUCCESS !== $process->run(function (string $type, string $data) use ($output) {
+               $output->write($data);
+           })) {
+               $output->write($process->getErrorOutput());
+
+               return Command::FAILURE;
+           }
+
+           $output->writeln('');
+       }
+
+       return Command::SUCCESS;
+    })
+    ->run()
+;

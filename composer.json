@@ -1,0 +1,17 @@
+{
+    "name": "rushlow-development/php-tools",
+    "description": "Init development tooling for PHP projects",
+    "license": "Apache-2.0",
+    "type": "library",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Jesse Rushlow",
+            "email": "jr@rushlow.dev"
+        }
+    ],
+    "require": {
+        "symfony/console": "^7.0",
+        "symfony/process": "^7.0"
+    }
+}
