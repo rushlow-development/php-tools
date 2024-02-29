@@ -1,18 +1,20 @@
 {
-    "tools:upgrade": {
-        "tools:upgrade:php-cs-fixer": "composer upgrade -d tools/php-cs-fixer",
-        "tools:upgrade:phpstan": "composer upgrade -d tools/phpstan",
-        "tools:upgrade:rector": "composer upgrade -d tools/rector",
-        "tools:upgrade:twigcs": "composer upgrade -d tools/twigcs"
-    },
-    "tools:run": [
-        "@tools:run:rector",
-        "@tools:run:php-cs-fixer",
-        "@tools:run:phpstan",
-        "@tools:run:twigcs"
-    ],
-    "tools:run:rector": "tools/rector/vendor/bin/rector process --clear-cache",
-    "tools:run:php-cs-fixer": "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix",
-    "tools:run:phpstan": "tools/phpstan/vendor/bin/phpstan --memory-limit=1G",
-    "tools:run:twigcs": "tools/twigcs/vendor/bin/twigcs --config .twigcs.dist.php"
+    "scripts": {
+        "tools:upgrade": {
+            "tools:upgrade:php-cs-fixer": "composer upgrade -d tools/php-cs-fixer",
+            "tools:upgrade:phpstan": "composer upgrade -d tools/phpstan",
+            "tools:upgrade:rector": "composer upgrade -d tools/rector",
+            "tools:upgrade:twigcs": "composer upgrade -d tools/twigcs"
+        },
+        "tools:run": [
+            "@tools:run:rector",
+            "@tools:run:php-cs-fixer",
+            "@tools:run:phpstan",
+            "@tools:run:twigcs"
+        ],
+        "tools:run:rector": "tools/rector/vendor/bin/rector process --clear-cache",
+        "tools:run:php-cs-fixer": "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix",
+        "tools:run:phpstan": "tools/phpstan/vendor/bin/phpstan --memory-limit=1G",
+        "tools:run:twigcs": "tools/twigcs/vendor/bin/twigcs --config .twigcs.dist.php"
+    }
 }
