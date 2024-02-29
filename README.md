@@ -7,14 +7,17 @@ any underlying conflicts with tool dependencies and your own project dependencie
 
 ## Install
 
-1) From within your project,
-`git submodule add https://github.com/rushlow-development/php-tools tools`. This
+All commands are run from your root project directory. e.g. `path/to/your-project`
+
+1) Run `composer install -d tools`
+ 
+2) Run `git submodule add https://github.com/rushlow-development/php-tools tools`. This
 will "clone" the `php-tools` repo into `path-to-project/tools`.
 
-2) Run `tools/bin/install` which will run `composer upgrade` in each of the tool
+3) Run `tools/bin/install` which will run `composer upgrade` in each of the tool
 directories.
 
-3) Copy and paste the contents of `scripts.json` into your _`root`_ composer.json
+4) Copy and paste the contents of `scripts.json` into your _`root`_ composer.json
 file. This will allow you to run `composer tools:run` from your project root
 directory. 
 

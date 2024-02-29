@@ -15,7 +15,7 @@ require dirname(__DIR__).'/vendor/autoload.php';
        foreach (['php-cs-fixer', 'phpstan', 'psalm', 'rector'] as $path) {
            $output->writeln(sprintf('Installing %s', $path));
 
-           $process = Process::fromShellCommandline(sprintf('composer upgrade -d %s', $path));
+           $process = Process::fromShellCommandline(sprintf('composer upgrade -d %s', $path), dirname(__DIR__));
 
            if (Command::SUCCESS !== $process->run(function (string $type, string $data) use ($output) {
                $output->write($data);
